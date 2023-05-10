@@ -2204,7 +2204,7 @@ CheckInsanityVsCastle:							# Checks days to insane vs days to castle and if th
 	mov r12, rsi								# create temp value for days to castle
 	mov r13, r11								# create temp value for days till insane
 	
-	cmp r13, r12 								# if the difference is greater that -5, hero becomes lost this indicates that the insanity timer runs out before escape counter	
+	cmp r13, r12 								# if days to castle > then Days to insane, hero becomes lost this indicates that the insanity timer runs out before escape counter	
 	jl ForestFlag
 	ret
 	
