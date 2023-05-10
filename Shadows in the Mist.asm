@@ -1,9 +1,9 @@
-# Name: ▐▐▐▐▐▐▐▐▐ ▐▐▐▐▐
+# Name: █████████ █████
 # Course: CSC_35
-# Term & Year: Spring ▐▐▐▐
+# Term & Year: ██████ ████
 # Project: Final Project
 #
-# 1. Assemble	: as -o final.o Shadows_In_The_Mist.asm
+# 1. Assemble	: as -o final.o Final.asm
 # 2. Link		: ld -o a.out final.o csc35.o
 # 3. Execute	: ./a.out
 #
@@ -309,7 +309,7 @@ MapFoundText:
 	.ascii "several days of travel."
 	.ascii "\n\n\tDespite the map's incomplete nature, you feel a sense of relief and gratitude. Without this discovery, you might have been lost in the\nHowling Woods forever. You carefully fold the map and tuck it into your own pocket, "
 	.ascii "determined to use it to its fullest potential.\n"
-	.ascii "\t -1 Day on Journey to castle\n\0"
+	.ascii "\t -2 Day on Journey to castle\n\0"
 
 # ****************************************************************************** Player Stats Values *********************************************************************
 													# stored in r11
@@ -336,7 +336,7 @@ Sanity:
 	
 													# Days left to castle stored in rsi
 Castle:												# Days to Castle Game value set to 60
-	.quad 60
+	.quad 50
 
 # ********************************************************************************** Misc. *****************************************************************************
 													# New Line on it's own
@@ -1452,6 +1452,7 @@ CheckMinotaurEvent:
 
 MapEvent:
 	call DecreaseDaysToCastle
+	call DecreaseDaysToCastle
 	call FoundMapEvent
 	call PlayerPrompt
 	call DefaultOptions
@@ -2204,7 +2205,7 @@ CheckInsanityVsCastle:							# Checks days to insane vs days to castle and if th
 	mov r13, r11								# create temp value for days till insane
 	
 	cmp r13, r12 								# if the difference is greater that -5, hero becomes lost this indicates that the insanity timer runs out before escape counter	
-	jle ForestFlag
+	jl ForestFlag
 	ret
 	
 ForestFlag:									
