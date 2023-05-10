@@ -1541,7 +1541,7 @@ GameOverLost:
 	je goAgain
 	call Exit
 	
-# ************************************************* Special Event 90%  on 3x stats to call, then 10% chance (VERY RARE) **************************************************************
+# ************************************************* Special Event 80%  on 3x stats to call, then 10% chance (VERY RARE) **************************************************************
 SpecialEventChance:
 	
 	mov rdi, 101
