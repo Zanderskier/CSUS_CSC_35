@@ -283,7 +283,6 @@ TerrorText:
 	.ascii "\n\t You lost 10 Health, 15 Stamina, 10 Sanity, 2 Days added to journey\n\0"
 	
 ExhaustedText:
-	.ascii "\tYou've been pushing your body beyond its limits in order to navigate the treacherous forest, and it finally catches up with you. As you're\nrunning through the woods, your legs"
 	.ascii "\tYou've been pushing your body beyond its limits in order to navigate the treacherous forest, and it finally catches up with you. As you're\nrunning through the woods, your legs "
 	.ascii "suddenly give out, and you collapse to the ground. Everything begins to go black, and you feel yourself slipping\naway into unconsciousness.\n"
 	.ascii "\n\tJust before you completely lose consciousness, you see an eerie cat with needle like teeth giving you an unsettling grin. It seems to be\nbeckoning you with its eyes, and you feel yourself being "
@@ -2205,7 +2204,6 @@ CheckInsanityVsCastle:							# Checks days to insane vs days to castle and if th
 	mov r12, rsi								# create temp value for days to castle
 	mov r13, r11								# create temp value for days till insane
 	
-	cmp r13, r12 								# if the difference is greater that -5, hero becomes lost this indicates that the insanity timer runs out before escape counter	
 	cmp r13, r12 								# if the difference is greater, hero becomes lost this indicates that the insanity timer runs out before escape counter	
 	jl ForestFlag
 	mov r12, 0
