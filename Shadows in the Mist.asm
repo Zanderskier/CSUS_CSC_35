@@ -3,7 +3,7 @@
 # Term & Year: Spring 2023
 # Project: Final Project
 #
-# 1. Assemble	: as -o final.o FailsFinal.asm
+# 1. Assemble	: as -o final.o Shadows in the Mist.asm
 # 2. Link	: ld -o a.out final.o csc35.o
 # 3. Execute	: ./a.out
 #
