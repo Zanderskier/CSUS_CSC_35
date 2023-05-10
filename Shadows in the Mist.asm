@@ -1662,7 +1662,7 @@ InsanityPrompt:
 	call GetUiBoarder
 	ret
 
-ExhaustionPrompt:								# is called if the players health = 0
+ExhaustionPrompt:								# is called if the players Stamina = 0
 	mov r8, 100									# assign player resources to registers
 	mov r9, Stamina
 	mov r10, Sanity
