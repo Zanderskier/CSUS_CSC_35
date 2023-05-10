@@ -31,8 +31,8 @@
 #		2 Random Meditation Events
 #		1 conditional radnom event where Health >= 81, Stamina >= 80, & Sanity >= 80 conditions must be met before event has chance of appearing
 #
-#		Game structure is broken up (as much as I was able to) into 3 main areas, 1. the MAIN (Line: 1136) area where most most the game functinality and check and order of operations are,
-#		2. Text output Subroutines (Line: 1593, here is where anything that will be outputed to a screen will be called from. 3. Game Logic (Line: 2161), this is where any shuffling of registors or values happens
+#		Game structure is broken up (as much as I was able to) into 3 main areas, 1. the MAIN (Line: 1136) area where most most the game functinality and checks order of operations are,
+#		2. Text output Subroutines (Line: 1593), here is where anything that will be outputed to a screen will be called from. 3. Game Logic (Line: 2161), this is where any shuffling of registors or values happens
 
 .intel_syntax noprefix
 .data
