@@ -1,9 +1,8 @@
-# Name: █████████ █████
 # Course: CSC_35
-# Term & Year: ██████ ████
+# Term & Year: Spring 2023
 # Project: Final Project
 #
-# 1. Assemble	: as -o final.o Final.asm
+# 1. Assemble	: as -o final.o FailsFinal.asm
 # 2. Link		: ld -o a.out final.o csc35.o
 # 3. Execute	: ./a.out
 #
@@ -37,6 +36,33 @@
 .intel_syntax noprefix
 .data
 
+# ****************************************************************************** Player Stats Values *********************************************************************
+													# stored in r11
+DaysLeft:										    # Days left till player goes insane
+	.quad 120
+	
+													# Health stored in r8
+HealthText:
+	.ascii "Health: \0"
+Health:
+	.quad 80
+	
+													# Stamina stored in r9
+StaminaText:
+	.ascii "Stamina: \0"
+Stamina:
+	.quad 100
+	
+													# Sanity stored in r10
+SanityText:
+	.ascii "Sanity: \0"
+Sanity:
+	.quad 100
+	
+													# Days left to castle stored in rsi
+Castle:												# Days to Castle Game value set to 60
+	.quad 60
+
 # ***************************************************************** Game Start text prompts *************************************************************************
 GameTitle:
 	.ascii "\t\t\t\t\t\t╔═╗┬ ┬┌─┐┌┬┐┌─┐┬ ┬┌─┐  ┬┌┐┌  ┌┬┐┬ ┬┌─┐  ╔╦╗┬┌─┐┌┬┐\n"
@@ -49,7 +75,7 @@ GameIntro1:
 	.ascii "how you got here.\n\n\tAs you stand up, you feel a sense of dread wash over you as you realize where you are. The Howling Woods is known to be cursed,\n"
 	.ascii "and its dark energy can cause people to lose their minds over time. The air is thick with a fog that seems to be alive, and the ground\nbeneath your feet "
 	.ascii "is damp and slippery.\n\n\tYou take a few steps forward and begin to feel the effects of the curse. Your thoughts become cloudy, and you struggle to focus on your\n"
-	.ascii "surroundings. You can feel The Howling Woods slowly but surely causing you to go lose your grip on reality.\n"
+	.ascii "surroundings. You can feel The Howling Woods slowly but surely causing you to lose your grip on reality.\n"
 	.ascii "\n\tSuddenly, you hear a deafening roar, and before you can react, a Nightstalker leaps out from the shadows towards you. It's a grotesque\n"
 	.ascii "creature with razor-sharp teeth, glowing red eyes, and a body coverd in matted fur. Its limbs are long and twissted, and its movements are\n"
 	.ascii "erratic and unpredictable.\n\n\tAs the Nightstalker lunges at you, you can feel your heart pounding in your chest. You draw your weapon and prepare to fight.\n"
@@ -100,7 +126,7 @@ PromtPlayer:
 	.ascii "What choice will you make?\n\0"
 # ***************************************************************************** Players Decisions based on state of game **********************************************
 GameOptions:
-	.ascii "\t1. Hunt: Increase Health: 10-15 points, Decrease Stamina: 5-10 points, but risk risk becoming the hunted\n"
+	.ascii "\t1. Hunt: Increase Health: 10-15 points, Decrease Stamina: 5-10 points, but risk becoming the hunted\n"
 	.ascii "\t2. Rest: Increase Health: 25-35 Points, Increase Stamina: 30-50 points, but risk losing sanity due to the brutal nature of the forest\n"
 	.ascii "\t3. Meditate: Increase Sanity: 25-45 points, Increase: Stamina by 10-15 points. Chance of Favorable/Unfavorable experience.\n\n\0"
 	
@@ -154,7 +180,7 @@ BlockedText:
 	.ascii "Blocked for: \0"
 	
 FleeText:
-	.ascii "You Flee from the beast, with extra FLEE!!! 1 Day added to Journey\n\0"
+	.ascii "You Flee from the beast, with extra FLEE!!! +2 Days added to Journey\n\0"
 	
 TryAgainText:												
 	.ascii "Care to try again?\n"
@@ -185,20 +211,20 @@ DreadClawText:
 	.ascii "\tWhile tracking through the dense foliage of The Howling Woods, you spot what you think to be a Buck at first, but soon find you’re\n"
 	.ascii "mistaken. The creature being tracked was no deer, but a twisted and darkly beautiful creature with gnarled antlers and shimmering black fur.\n"
 	.ascii "Its eyes glinted with an otherworldly intelligence, and its hooves left next to no trace as it moved through the forest. It’s a miracle you\n"
-	.ascii "were able to track it this far.\n\tYou slowly pull your bow from your back and draw and arrow from your quiver. From this distance you should be able to make a clean\n"
+	.ascii "were able to track it this far.\n\n\tYou slowly pull your bow from your back and draw and arrow from your quiver. From this distance you should be able to make a clean\n"
 	.ascii "kill. You take a kneeling stance, take a breath, and draw your bow.\n"
 	.ascii "\n\tJust as you are about to release your arrow when suddenly you hear a sound coming from above. Looking up, you catch a glimpse of a\n"
 	.ascii "sleek and dangerous-looking beast with razor-sharp claws and gleaming yellow eyes perched on a high tree branch.\n"
 	.ascii "\n\tWithout warning, the creature lunges at you, its deadly claws slashing through the air."
 	.ascii " You attempt to adjust your aim with your bow,\nbut it happens too fast and you shoot wide. The creature barrels down on you, knocking you both to the ground. The Dreadclaw sinks its sharp\n"
 	.ascii "teeth into your shoulder, causing you to cry out in pain. With adrenaline coursing through your veins, you muster all your strength and manage\n"
-	.ascii "sto grab hold of the creature's neck, throwing it off of you with all you might. As the beast recoils, you take the opportunity to draw your\nsword and prepare for another attack.\n\0"
+	.ascii "to grab hold of the creature's neck, throwing it off of you with all you might. As the beast recoils, you take the opportunity to draw your\nsword and prepare for another attack.\n\0"
 
 MinotaurText:
-	.ascii "\tAs you made your way through the mist-shrouded forest, you hear a faint sound in the distance. It was the sound of something moving through\nthe underbrush, and it was getting closer.\n"
+	.ascii "\tAs you make your way through the mist-shrouded forest, you hear a faint sound in the distance. It was the sound of something moving through\nthe underbrush, and it was getting closer.\n"
 	.ascii "\n\tAs you turn a corner, you find yourself face to face with a creature unlike any you’ve ever seen. It has a humanoid figure, but its skin is\n"
 	.ascii "covered in scales and its eyes glow an eerie green. It strikes you as a minotaur, or a version of one. A creature thought to be a myth. The creature\n"
-	.ascii "is wielding a long double bladed axe, and it let out a guttural growl as it charged towards the hero. Your heart races as you realize this is no\n"
+	.ascii "is wielding a long double bladed axe, and it lets out a guttural growl as it charges towards you. Your heart races as you realize this is no\n"
 	.ascii "ordinary animal. You draw your weapon and prepare for the worst.\n"
 	.ascii "\n\tYou dodge to the side, barely avoiding the deadly weapon. You swing your weapon at the creature, but it's quick and agile, easily avoiding\n"
 	.ascii "your attack. You step back, trying to gain some distance and catch your breath. Before going on the offensive.\n\0"
@@ -209,15 +235,15 @@ NightStalkerText:
 	.ascii "way towards the noise.\n"
 	.ascii "\n\tOut of the shadows, the nightstalker emerges, its glowing eyes fixed on you. You draw your bow and prepare to fight, but the beast is\n"
 	.ascii "too fast. With lightning speed, it lunges forward, knocking your bow out of your hand and sending it flying into the underbrush. With a growl,\n"
-	.ascii "the nightstalker turns its attention back to you, ready to strike again. You draw your sword and wondering how many more nightmares there are\nin this cursed place.\n\0"
+	.ascii "the nightstalker turns its attention back to you, ready to strike again. You draw your sword, wondering how many more nightmares there are\nin this cursed place.\n\0"
 
 SpiderText:
 	.ascii "\tAs you stalk through the thick undergrowth of the Howling Woods, your senses on high alert, you suddenly hear a faint clicking sound.\n"
 	.ascii "You slow your breathing, trying to pinpoint the source of the noise. It gets louder and closer, until you spot movement among the leaves. A\n"
 	.ascii "large, black spider-like creature scurries out of a nearby bush, its multiple legs skittering over the ground.\n"
-	.ascii "\n\tYou freeze, watching as it raises its bulbous abdomen and hisses at you, revealing a set of a mouth full of sharp fangs, and four claw like\n"
-	.ascii "horns coming out of it's face. It's unlike any spider you've ever seen before - its body is covered in spines, and it seems to be the size of a\n"
-	.ascii "large dog. The creature continues to hiss and advance towards you, its eyes glinting in the dappled sunlight. You loose an arrow at it, striking it\n"
+	.ascii "\n\tYou freeze, watching as it raises its bulbous abdomen and hisses at you, revealing a mouth full of sharp fangs, and four claw like\n"
+	.ascii "horns coming out of it's face. It's unlike any spider you've ever seen before - its body is covered in spines, and it seems to be the size of an\n"
+	.ascii " adult grizzle bear The creature continues to hiss and advance towards you, its eyes glinting in the dappled sunlight. You loose an arrow at it, striking it\n"
 	.ascii "in the fleshy part of its abdomen. You draw your sword, praying that the smell that just entered your nose is coming from this viel creature and not\nyour own set of trousers.\n\0"
 
 MindGame1Text:
@@ -234,7 +260,7 @@ MindGame2Text:
 	.ascii "and murmurs. You try to shrug it off and close your eyes, but the whispers become louder and more urgent. Suddenly, you feel something brush\n"
 	.ascii "against your face, and you jolt awake.\n\n\tYou find yourself staring into the glowing eyes of a strange creature, its long fingers inches from your face. Its skin is slick and\n"
 	.ascii "slimy, and it exudes a putrid odor that makes your stomach turn. You scramble to your feet and draw your weapon, but the creature simply\nvanishes into the mist.\n"
-	.ascii "\n\tShaken, you realize that you cannot rest safely in this forest. You steel yourself and continue on, wary of what other terrors may\nlie ahead. You lost 5 additional Sanity\n\0"
+	.ascii "\n\tShaken, you realize that you cannot rest safely in this forest. You steel yourself and continue on, wary of what other terrors may\nlie ahead. You lost 10 additional Sanity\n\0"
 
 EnlightenmentText:
 	.ascii "\tYou sit down and begin to meditate, focusing your mind and breathing deeply. As you do, you feel your thoughts and worries begin to drift\naway, replaced by a sense of calm and clarity.\n"
@@ -242,7 +268,7 @@ EnlightenmentText:
 	.ascii "\n\tSuddenly, you become aware of a new path that you had not noticed before. It seems to be a shortcut that will take you directly to the\ncastle, bypassing many of the dangers and obstacles you had encountered before.\n"
 	.ascii "\n\tYou feel a sense of enlightenment and understanding wash over you, as if you have been given a glimpse into the true nature of things.\n"
 	.ascii "You stand up, feeling refreshed and renewed, ready to face whatever challenges lie ahead on your journey to the castle.\n"
-	.ascii "\n\t Minus 2 days off your journey to the castle\n\0"
+	.ascii "\n\t -2 days off your journey to the castle\n\0"
 	
 TerrorText:
 	.ascii "\tAs you close your eyes and try to focus on your breath, the mist around you seems to grow thicker and closer. The peaceful sound of the\n"
@@ -304,39 +330,11 @@ AcceptSpecialEventText:
 	.ascii "\n\tYour body aches and you feel disoriented, but you know you must press on if you hope to make it to the castle. The path ahead may be\ntreacherous, but you have come too far to turn back now.\n\0"
 
 MapFoundText:
-	.ascii "\tAs you finish off the minotaur and catch your breath and examine the creature's body, you notice a piece of parchment sticking out of its\npocket. You carefully remove it and realize it's a partial map of the surrounding area."
-	.ascii "\n\n\tThe map appears to be torn and incomplete, but you can make out some familiar landmarks and a few new ones. You notice a marking that\nappears to indicate a shortcut through the forest, which could potentially save you "
-	.ascii "several days of travel."
-	.ascii "\n\n\tDespite the map's incomplete nature, you feel a sense of relief and gratitude. Without this discovery, you might have been lost in the\nHowling Woods forever. You carefully fold the map and tuck it into your own pocket, "
-	.ascii "determined to use it to its fullest potential.\n"
-	.ascii "\t -2 Day on Journey to castle\n\0"
-
-# ****************************************************************************** Player Stats Values *********************************************************************
-													# stored in r11
-DaysLeft:										    # Days left till player goes insane
-	.quad 120
-	
-													# Health stored in r8
-HealthText:
-	.ascii "Health: \0"
-Health:
-	.quad 80
-	
-													# Stamina stored in r9
-StaminaText:
-	.ascii "Stamina: \0"
-Stamina:
-	.quad 100
-	
-													# Sanity stored in r10
-SanityText:
-	.ascii "Sanity: \0"
-Sanity:
-	.quad 100
-	
-													# Days left to castle stored in rsi
-Castle:												# Days to Castle Game value set to 60
-	.quad 50
+	.ascii "\tAs you stand over the defeated Minotaur, you can feel the weight of exhaustion and pain bearing down on you. Your armor is battered and\nbloodied, bearing the marks of the Minotaur's savage attacks. Your sword arm feels heavy and your breathing is ragged as you try to catch your breath."
+	.ascii "\n\n\tYou begin to examine the creature's body and notice a piece of parchment sticking out of its pocket. You carefully remove it and realize\nit's a partial map of the surrounding area."
+	.ascii "\n\n\tThe map appears to be torn and incomplete, but you can make out some familiar landmarks and a few new ones. You notice a marking that\nappears to indicate a shortcut through the forest, which could potentially save you several days of travel."
+	.ascii "\n\n\tDespite the map's incomplete nature, you feel a sense of relief and gratitude. Without this discovery, you might have been lost in the\nHowling Woods forever. You carefully fold the map and tuck it into your own pocket, determined to use it to its fullest potential."
+	.ascii "\n\t -2 Day on Journey to castle\n\0"
 
 # ********************************************************************************** Misc. *****************************************************************************
 													# New Line on it's own
@@ -621,7 +619,7 @@ SpecialEventPicture:
 	.ascii "\t\t\t\t\t      __     `YMMM| OP'~\"YOOOOOOOOOOOP\"~`YO |MMMP'     __\n"
 	.ascii "\t\t\t\t\t    ,dMMMb.     ~~' OO     `YOOOOOP'     OO `~~     ,dMMMb.\n"
 	.ascii "\t\t\t\t\t _,dP~  `YMba_      OOb      `OOO'      dOO      _aMMP'  ~Yb._\n"
-	.ascii "\t\t\t\t\t             `YMMMM\\`OOo     OOO      oOO'/MMMMP'\n"
+	.ascii "\t\t\t\t\t             `YMMMM\\`OOo      OOO      oOO'/MMMMP'\n"
 	.ascii "\t\t\t\t\t     ,aa.     `~YMMb `OOOb._,dOOOb._,dOOO'dMMP~'       ,aa.\n"
 	.ascii "\t\t\t\t\t   ,dMYYMba._         `OOOOOOOOOOOOOOOOO'          _,adMYYMb.\n"
 	.ascii "\t\t\t\t\t  ,MP'   `YMMba._      OOOOOOOOOOOOOOOOO       _,adMMP'   `YM.\n"
@@ -1308,6 +1306,7 @@ prompt:
 VictoryPrompt:
 	mov rax, 0									# reset ForestFlag
 	mov r15, 0									# reset decision prompt
+	call DecreaseDaysToCastle
 	call ResetRandomHSS
 	call CheckInsanityVsCastle					# check to see how great a difference between days to castle and going insane is
 	call CheckCastleDays						# check if days to castle = 0
@@ -1566,7 +1565,7 @@ SpecialEventChoice:
 	je AcceptSpecialEvent
 	cmp rdi, 2
 	je RegectSpecialEvent
-	jmp SpecialEventChance
+	jmp SpecialEventChoice
 	
 AcceptSpecialEvent:
 	call AcceptSpecialEventLogic
