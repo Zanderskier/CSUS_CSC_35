@@ -133,7 +133,7 @@ GameOptions:
 	
 CombatOptions:
 	.ascii "\t1. Light Attack: Attack Creature for 10-30 points of damange.\n"
-	.ascii "\t2. Heavy Attack: Attack for 30-40 points of damage *Comsume 10 Stamina; Stamina < 10, will preform Light Attack*\n"
+	.ascii "\t2. Heavy Attack: Attack for 30-40 points of damage *Comsume 10 Stamina*\n"
 	.ascii "\t3. Block: Defend from 10-35 points of damage; *10% chance to Sheild Bash for 5-25 points of damage*\n"
 	.ascii "\t4. Counter Attack: Attempt to counter attack for 15-80 points of damage *50% chance Dodge; fail +15 damage, Comsume 15 Stamina*\n"
 	.ascii "\t5. Flee: FLEE WITH EXTRA FLEE!!!!! *Consumes 20-40 Stamina, Add 2 days to journey*\n\0"
@@ -2302,7 +2302,6 @@ Combat2:
 
 	cmp r9, 10									# make sure player has block
 	jg AttemptHeavyAttack
-	jmp Combat1									# jump to light attack if stamina below 10
 
 AttemptHeavyAttack:	
 	sub r9, 10									# sub 10 points from stamina
