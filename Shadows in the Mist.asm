@@ -3501,7 +3501,7 @@ Monster135:
 	lea rdi, MonsterHealth135
 	call WriteString
 	ret
-	Monster131:
+Monster131:
 	lea rdi, MonsterHealth131
 	call WriteString
 	ret
@@ -3513,7 +3513,7 @@ Monster125:
 	lea rdi, MonsterHealth125
 	call WriteString
 	ret
-	Monster121:
+Monster121:
 	lea rdi, MonsterHealth121
 	call WriteString
 	ret
@@ -3525,7 +3525,7 @@ Monster115:
 	lea rdi, MonsterHealth115
 	call WriteString
 	ret
-	Monster111:
+Monster111:
 	lea rdi, MonsterHealth111
 	call WriteString
 	ret
@@ -3537,7 +3537,7 @@ Monster105:
 	lea rdi, MonsterHealth105
 	call WriteString
 	ret
-	Monster101:
+Monster101:
 	lea rdi, MonsterHealth101
 	call WriteString
 	ret
@@ -3549,7 +3549,7 @@ Monster95:
 	lea rdi, MonsterHealth95
 	call WriteString
 	ret
-	Monster91:
+Monster91:
 	lea rdi, MonsterHealth91
 	call WriteString
 	ret
@@ -3561,7 +3561,7 @@ Monster85:
 	lea rdi, MonsterHealth85
 	call WriteString
 	ret
-	Monster81:
+Monster81:
 	lea rdi, MonsterHealth81
 	call WriteString
 	ret
@@ -3573,7 +3573,7 @@ Monster75:
 	lea rdi, MonsterHealth75
 	call WriteString
 	ret
-	Monster71:
+Monster71:
 	lea rdi, MonsterHealth71
 	call WriteString
 	ret
@@ -3585,7 +3585,7 @@ Monster65:
 	lea rdi, MonsterHealth65
 	call WriteString
 	ret
-	Monster61:
+Monster61:
 	lea rdi, MonsterHealth61
 	call WriteString
 	ret
@@ -3597,7 +3597,7 @@ Monster55:
 	lea rdi, MonsterHealth55
 	call WriteString
 	ret
-	Monster51:
+Monster51:
 	lea rdi, MonsterHealth51
 	call WriteString
 	ret
@@ -3609,7 +3609,7 @@ Monster45:
 	lea rdi, MonsterHealth45
 	call WriteString
 	ret
-	Monster41:
+Monster41:
 	lea rdi, MonsterHealth41
 	call WriteString
 	ret
@@ -3621,7 +3621,7 @@ Monster35:
 	lea rdi, MonsterHealth35
 	call WriteString
 	ret
-	Monster31:
+Monster31:
 	lea rdi, MonsterHealth31
 	call WriteString
 	ret
@@ -3633,7 +3633,7 @@ Monster25:
 	lea rdi, MonsterHealth25
 	call WriteString
 	ret
-	Monster21:
+Monster21:
 	lea rdi, MonsterHealth21
 	call WriteString
 	ret
@@ -3645,7 +3645,7 @@ Monster15:
 	lea rdi, MonsterHealth15
 	call WriteString
 	ret
-	Monster11:
+Monster11:
 	lea rdi, MonsterHealth11
 	call WriteString
 	ret
