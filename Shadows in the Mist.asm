@@ -9,12 +9,6 @@
 #
 # Registors:
 # rax: Lost / Special flag / Attack Damage		r8:  Health
-# rbx: Block or Attack choice				r9:  Stamina
-# rcx: MonsterDamage					r10: Sanity
-# rdx: MonsterHealth					r11: Days till insane
-# rsi: days to castle					r12: random1 / Delta Health
-# rbp:--						r13: random2 / Delta Stamina
-# rsp:--						r14: random3 / Delta Sanity / Sheild blocked
 # r15: default choice / MonsterHealth
 #
 # color codes:
@@ -1773,6 +1767,7 @@ GameOverLost:
 	je goAgain
 	call Exit
 	
+# ************************************************* Special Event 90%  on 3x stats to call, then 10% chance (VERY RARE) **************************************************************
 SpecialEventChance:
 	
 	mov rdi, 101
